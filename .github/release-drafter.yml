@@ -1,0 +1,56 @@
+template: |
+  ## Changes
+
+  $CHANGES
+
+name-template: "v$RESOLVED_VERSION 🎉"
+
+tag-template: "v$RESOLVED_VERSION"
+
+categories:
+  - title: "😉 Features"
+    labels:
+      - "feature"
+  - title: "🤔 Enhancements"
+    labels:
+      - "enhancement"
+  - title: "😟 Fixes"
+    labels:
+      - "bug"
+      - "refactor"
+  - title: "🥱 Dependency Updates"
+    labels:
+      - "dependencies"
+
+version-resolver:
+  major:
+    labels:
+      - "major"
+  minor:
+    labels:
+      - "minor"
+  default: patch
+
+exclude-labels:
+  - "ignore"
+
+autolabeler:
+  - label: feature
+    branch:
+      - "/^feat(ure)?[/-].+/"
+  - label: enhancement
+    branch:
+      - "/^enhance(ment)?[/-].+/"
+  - label: bug
+    branch:
+      - "/^fix[/-].+/"
+  - label: refactor
+    branch:
+      - "/^refactor[/-].+/"
+  - label: dependencies
+    branch:
+      - "/^bump[/-].+/"
+
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+
+change-title-escapes: '\<*_&'

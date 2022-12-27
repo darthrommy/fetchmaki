@@ -1,0 +1,31 @@
+- name: feature
+  description: New feature
+  color: 2ba48a
+
+- name: enhancement
+  description: Extend feature
+  color: 4679a6
+
+- name: bug
+  description: Something isn't working
+  color: fe4c5e
+
+- name: refactor
+  description: Refactoring codes
+  color: f27142
+
+- name: dependencies
+  description: "Dependency update"
+  color: c79b2d
+
+- name: major
+  description: Major update
+  color: e54a92
+
+- name: minor
+  description: Minor update
+  color: e56c92
+
+- name: ignore
+  decription: Won't be written in changelog
+  color: 98948f
