@@ -1,4 +1,4 @@
-import { queryParser } from "@darthrommy/fetches/shared";
+import { queryParser } from "../shared/query.js";
 import {
   ContentType,
   FetchHeaders,

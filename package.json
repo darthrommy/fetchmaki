@@ -22,7 +22,7 @@
     "prebuild": "rimraf dist",
     "build": "concurrently -m 8 'npm:build:*'",
     "build:base": "rollup -c",
-    "build:shared": "rollup -c --config-shared",
+    "build:zod": "rollup -c --config-zod",
     "prepublishOnly": "npm run build",
     "lint": "eslint src/**"
   },

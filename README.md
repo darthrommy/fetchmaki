@@ -8,7 +8,7 @@ Must be exported to `src/index.ts`. You must define only methods related to `typ
 
 ### `src/shared/**`
 
-Must be exported to `src/shared.ts`. Any codes that **MIGHT** be shared across the entire library such as `queryParser` must be defined inside this directory.
+Must not be included in package entrypoints. Any codes that are shared across the entire library such as `queryParser` must be defined inside this directory.
 
 ### `src/xxx/**`
 

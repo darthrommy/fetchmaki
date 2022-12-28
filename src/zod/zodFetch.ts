@@ -1,5 +1,5 @@
 import { handleErrorBody, resolveReqHeaders } from "@darthrommy/fetches";
-import { queryParser } from "@darthrommy/fetches/shared";
+import { queryParser } from "../shared/query.js";
 import { z } from "zod";
 import { ZFResponse, ZodFetch } from "./types.js";
 

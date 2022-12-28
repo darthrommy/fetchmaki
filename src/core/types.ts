@@ -1,4 +1,4 @@
-import { Query } from "@darthrommy/fetches/shared";
+import { Query } from "../shared/query.js";
 
 /** `typedFetch` interface */
 export type TypedFetch = {
