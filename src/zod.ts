@@ -1,2 +1,2 @@
-export { zodFetch } from "./zod/zodFetch.js";
-export * from "./zod/types.js";
+export * from "./zod/types";
+export { zodFetch } from "./zod/zodFetch";

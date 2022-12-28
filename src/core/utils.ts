@@ -1,4 +1,4 @@
-import { FetchHeaders, Json, Query } from "./types.js";
+import { FetchHeaders, Json, Query } from "./types";
 
 export const queryParser = (query: Query) => {
   const joined = new URLSearchParams(query).toString();

@@ -1,10 +1,5 @@
-import {
-  ContentType,
-  FetchResponse,
-  ResponseBody,
-  TypedFetch,
-} from "./types.js";
-import { handleErrorBody, queryParser, resolveReqHeaders } from "./utils.js";
+import { ContentType, FetchResponse, ResponseBody, TypedFetch } from "./types";
+import { handleErrorBody, queryParser, resolveReqHeaders } from "./utils";
 
 const handleResBody = async (res: Response, contentType: ContentType) => {
   switch (contentType) {

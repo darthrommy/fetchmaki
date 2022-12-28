@@ -26,6 +26,7 @@ function createEsmBuild(input, output) {
     plugins: [typescript()],
   });
 }
+
 /**
  * @param {string} input
  * @param {string} output
@@ -47,6 +48,22 @@ function createDeclaration(input, output) {
   });
 }
 
+/**
+ * @param {string} input
+ * @param {string} output
+ */
+function createCJSBuild(input, output) {
+  return defineConfig({
+    input,
+    output: {
+      file: output,
+      format: "cjs",
+    },
+    external,
+    plugins: [typescript()],
+  });
+}
+
 export default (args) => {
   let c = Object.keys(args).find((key) => key.startsWith("config-"));
   if (c) {
@@ -56,6 +73,8 @@ export default (args) => {
   }
   return [
     ...(c === "index" ? [createDeclaration(`src/${c}.ts`, "dist")] : []),
-    createEsmBuild(`src/${c}.ts`, `dist/${c}.js`),
+    createEsmBuild(`src/${c}.ts`, `dist/esm/${c}.js`),
+    createEsmBuild(`src/${c}.ts`, `dist/esm/${c}.mjs`),
+    createCJSBuild(`src/${c}.ts`, `dist/${c}.js`),
   ];
 };
