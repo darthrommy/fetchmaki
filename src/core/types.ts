@@ -52,30 +52,22 @@ export type FetchError = {
   };
 };
 
+export type FetchConfig = {
+  headers?: FetchHeaders;
+  query?: Query;
+  body?: Json;
+  contentType?: ContentType;
+};
+
 // get type
-export type GetRequst = [
-  url: string,
-  config?: {
-    headers?: FetchHeaders;
-    query?: Query;
-    contentType?: ContentType;
-  }
-];
+export type GetRequst = [url: string, config?: Omit<FetchConfig, "body">];
 
 export type GetFunction = <Data extends ResponseBody>(
   ...args: GetRequst
 ) => Promise<FetchResponse<Data>>;
 
 // post type
-export type PostRequest = [
-  url: string,
-  config?: {
-    body?: Json;
-    query?: Query;
-    headers?: FetchHeaders;
-    contentType?: ContentType;
-  }
-];
+export type PostRequest = [url: string, config?: FetchConfig];
 
 export type PostFunction = <Data extends ResponseBody>(
   ...args: PostRequest
@@ -84,11 +76,7 @@ export type PostFunction = <Data extends ResponseBody>(
 // put type
 export type PutRequest = [
   url: string,
-  config?: {
-    body?: Json;
-    query?: Query;
-    headers?: FetchHeaders;
-  }
+  config?: Omit<FetchConfig, "contentType">
 ];
 
 export type PutFunction = (
@@ -96,30 +84,14 @@ export type PutFunction = (
 ) => Promise<FetchResponse<undefined>>;
 
 // patch type
-export type PatchRequest = [
-  url: string,
-  config?: {
-    body?: Json;
-    query?: Query;
-    headers?: FetchHeaders;
-    contentType?: ContentType;
-  }
-];
+export type PatchRequest = [url: string, config?: FetchConfig];
 
 export type PatchFunction = <Data extends ResponseBody>(
   ...args: PatchRequest
 ) => Promise<FetchResponse<Data>>;
 
 // delete type
-export type DeleteRequest = [
-  url: string,
-  config?: {
-    body?: Json;
-    query?: Query;
-    headers?: FetchHeaders;
-    contentType?: ContentType;
-  }
-];
+export type DeleteRequest = [url: string, config?: FetchConfig];
 
 export type DeleteFunction = <Data extends ResponseBody = undefined>(
   ...args: DeleteRequest

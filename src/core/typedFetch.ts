@@ -25,7 +25,7 @@ const handleResBody = async (res: Response, contentType: ContentType) => {
 };
 
 /** handle response body on error */
-const handleErrorBody = async (res: Response) => {
+export const handleErrorBody = async (res: Response) => {
   try {
     return await res.json();
   } catch {
@@ -62,7 +62,7 @@ const resolveReturnValue = async <Data extends ResponseBody>(
   }
 };
 
-const resolveReqHeaders = (args: {
+export const resolveReqHeaders = (args: {
   body?: Json;
   headers?: FetchHeaders;
 }): FetchHeaders => {
@@ -110,7 +110,7 @@ export const typedFetch: TypedFetch = {
     const query = queryParser(config?.query ?? {});
     const res = await fetch(`${url}${query}`, {
       headers,
-      method: "POST",
+      method: "PATCH",
       body: config?.body ? JSON.stringify(config.body) : undefined,
     });
     const contentType = config?.contentType ?? "json";
@@ -122,7 +122,7 @@ export const typedFetch: TypedFetch = {
     const query = queryParser(config?.query ?? {});
     const res = await fetch(`${url}${query}`, {
       headers,
-      method: "POST",
+      method: "DELETE",
       body: config?.body ? JSON.stringify(config.body) : undefined,
     });
     const contentType = config?.contentType ?? "noContent";
