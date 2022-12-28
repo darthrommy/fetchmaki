@@ -4,7 +4,7 @@ import {
   resolveReqHeaders,
 } from "@darthrommy/fetches";
 import { z } from "zod";
-import { ZFResponse, ZodFetch } from "./types.js";
+import { ZFResponse, ZodFetch } from "./types";
 
 const handleResBody = async (res: Response, schema: z.ZodTypeAny) => {
   const body = await res.json();

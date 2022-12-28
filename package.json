@@ -5,17 +5,24 @@
   "type": "module",
   "main": "./dist/index.js",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
       "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.mjs"
+      },
+      "types": "./dist/index.d.ts",
+      "module": "./dist/esm/index.js",
+      "default": "./dist/index.js"
     },
     "./*": {
       "import": {
         "types": "./dist/*.d.ts",
-        "default": "./dist/*.js"
-      }
+        "default": "./dist/esm/*.mjs"
+      },
+      "types": "./dist/*.d.ts",
+      "module": "./dist/esm/*.js",
+      "default": "./dist/*.js"
     }
   },
   "files": [
