@@ -17,4 +17,5 @@ jobs:
           scope: "@darthrommy"
           always-auth: true
       - run: npm ci
+      - run: npm run build
       - run: npm pack --dry-run
