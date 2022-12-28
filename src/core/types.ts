@@ -1,34 +1,17 @@
-import { Query } from "../shared/query.js";
-
-/** `typedFetch` interface */
-export type TypedFetch = {
-  /** Just do a `GET`. `config.contentType` is `json` by default. */
-  get: GetFunction;
-
-  /** Just do a `POST`. `config.contentType` is `json` by default. */
-  post: PostFunction;
-
-  /** Just do a `PUT`. No response body will be returned.
-   * @see https://developer.mozilla.org/docs/Web/HTTP/Methods/PUT
-   */
-  put: PutFunction;
-
-  /** Just do a `PATCH`. `config.contentType` is `json` by default. */
-  patch: PatchFunction;
-
-  /** Just do a `DELETE`. `config.contentType` is `noContent` by default. */
-  delete: PostFunction;
-};
-
-/** content type */
-export type ContentType = "json" | "plain" | "html" | "noContent";
-
 /** headers type */
 export type FetchHeaders = Record<string, string>;
+
+/** possible JSON type */
 export type Json = Record<
   string,
-  string | number | boolean | { [key: string]: JSON } | Json[] | null
+  string | number | boolean | null | { [key: string]: Json } | Json[]
 >;
+
+/** query type */
+export type Query = Record<string, string>;
+
+/** available content type */
+export type ContentType = "json" | "plain" | "html" | "noContent";
 
 /** body type */
 export type ResponseBody = string | Json | undefined;
@@ -52,11 +35,32 @@ export type FetchError = {
   };
 };
 
+/** argument */
 export type FetchConfig = {
   headers?: FetchHeaders;
   query?: Query;
   body?: Json;
   contentType?: ContentType;
+};
+
+/** `typedFetch` interface */
+export type TypedFetch = {
+  /** Just do a `GET`. `config.contentType` is `json` by default. */
+  get: GetFunction;
+
+  /** Just do a `POST`. `config.contentType` is `json` by default. */
+  post: PostFunction;
+
+  /** Just do a `PUT`. No response body will be returned.
+   * @see https://developer.mozilla.org/docs/Web/HTTP/Methods/PUT
+   */
+  put: PutFunction;
+
+  /** Just do a `PATCH`. `config.contentType` is `json` by default. */
+  patch: PatchFunction;
+
+  /** Just do a `DELETE`. `config.contentType` is `noContent` by default. */
+  delete: PostFunction;
 };
 
 // get type

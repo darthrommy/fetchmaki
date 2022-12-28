@@ -16,7 +16,7 @@ export type ZodFetch = {
   patch: ZPatchFunction;
 };
 
-type ObjectSchema = z.ZodObject<z.ZodRawShape>;
+export type ObjectSchema = z.ZodObject<z.ZodRawShape>;
 
 export type ZFResponse<
   Schema extends ObjectSchema,
