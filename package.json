@@ -34,6 +34,7 @@
     "build": "concurrently -m 8 'npm:build:*'",
     "build:base": "rollup -c",
     "build:zod": "rollup -c --config-zod",
+    "build:supabase-edge": "rollup -c --config-supabase-edge",
     "prepublishOnly": "npm run build",
     "lint": "eslint src/**",
     "pack": "npm pack --dry-run"
