@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "description": "A simple fetch wrapper for Typescript",
   "type": "module",
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "import": {
@@ -18,11 +19,7 @@
     }
   },
   "files": [
-    "dist",
-    "package.json",
-    "README.md",
-    ".gitignore",
-    "tsconfig.json"
+    "dist"
   ],
   "sideEffects": false,
   "scripts": {
