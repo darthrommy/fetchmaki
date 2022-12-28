@@ -22,9 +22,9 @@
     "prebuild": "rimraf dist",
     "build": "concurrently -m 8 'npm:build:*'",
     "build:base": "rollup -c",
-    "build:shared": "rollup -c --config-shared",
+    "build:zod": "rollup -c --config-zod",
     "prepublishOnly": "npm run build",
-    "lint": "eslint src/*"
+    "lint": "eslint src/**"
   },
   "repository": {
     "type": "git",
@@ -49,5 +49,16 @@
   },
   "engines": {
     "node": ">=14.16"
+  },
+  "dependencies": {
+    "zod": "^3.20.2"
+  },
+  "peerDependencies": {
+    "zod": "^3.20.0"
+  },
+  "peerDependenciesMeta": {
+    "zod": {
+      "optional": true
+    }
   }
 }

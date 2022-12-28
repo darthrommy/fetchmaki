@@ -4,7 +4,7 @@
 
 - name: enhancement
   description: Extend feature
-  color: 4679a6
+  color: 449c0c
 
 - name: bug
   description: Something isn't working
@@ -20,11 +20,11 @@
 
 - name: major
   description: Major update
-  color: e54a92
+  color: 095ed3
 
 - name: minor
   description: Minor update
-  color: e56c92
+  color: 3c83da
 
 - name: ignore
   decription: Won't be written in changelog
