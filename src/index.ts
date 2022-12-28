@@ -1,6 +1,7 @@
+export { typedFetch } from "./core/typedFetch.js";
 export {
-  typedFetch,
+  queryParser,
   handleErrorBody,
   resolveReqHeaders,
-} from "./core/typedFetch.js";
+} from "./core/utils.js";
 export * from "./core/types.js";

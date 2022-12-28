@@ -1,14 +1,11 @@
-import { queryParser } from "../shared/query.js";
 import {
   ContentType,
-  FetchHeaders,
   FetchResponse,
-  Json,
   ResponseBody,
   TypedFetch,
 } from "./types.js";
+import { handleErrorBody, queryParser, resolveReqHeaders } from "./utils.js";
 
-/** handle response body on success */
 const handleResBody = async (res: Response, contentType: ContentType) => {
   switch (contentType) {
     case "plain":
@@ -21,19 +18,6 @@ const handleResBody = async (res: Response, contentType: ContentType) => {
       return;
     default:
       throw new Error("Response body type is inacceptable");
-  }
-};
-
-/** handle response body on error */
-export const handleErrorBody = async (res: Response) => {
-  try {
-    return await res.json();
-  } catch {
-    try {
-      return await res.text();
-    } catch {
-      return;
-    }
   }
 };
 
@@ -60,16 +44,6 @@ const resolveReturnValue = async <Data extends ResponseBody>(
       headers: res.headers,
     };
   }
-};
-
-export const resolveReqHeaders = (args: {
-  body?: Json;
-  headers?: FetchHeaders;
-}): FetchHeaders => {
-  return {
-    ...args.headers,
-    ...(args.body ? { "content-type": "application/json" } : {}),
-  };
 };
 
 /** An wrapper of the Web Fetch API. Provides `get`, `post`, `put`, `patch` and `delete` functions. */
