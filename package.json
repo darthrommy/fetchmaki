@@ -1,6 +1,6 @@
 {
   "name": "@darthrommy/fetches",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple fetch wrapper for Typescript",
   "type": "module",
   "exports": {
@@ -17,6 +17,13 @@
       }
     }
   },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    ".gitignore",
+    "tsconfig.json"
+  ],
   "sideEffects": false,
   "scripts": {
     "prebuild": "rimraf dist",
@@ -24,7 +31,8 @@
     "build:base": "rollup -c",
     "build:zod": "rollup -c --config-zod",
     "prepublishOnly": "npm run build",
-    "lint": "eslint src/**"
+    "lint": "eslint src/**",
+    "pack": "npm pack --dry-run"
   },
   "repository": {
     "type": "git",
