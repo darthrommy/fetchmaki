@@ -1,8 +1,9 @@
 {
   "name": "@darthrommy/fetches",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A simple fetch wrapper for Typescript",
   "type": "module",
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "import": {
@@ -18,11 +19,7 @@
     }
   },
   "files": [
-    "dist",
-    "package.json",
-    "README.md",
-    ".gitignore",
-    "tsconfig.json"
+    "dist"
   ],
   "sideEffects": false,
   "scripts": {

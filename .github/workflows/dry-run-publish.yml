@@ -1,0 +1,21 @@
+name: dry run publish
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  dry-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: "https://registry.npmjs.org"
+          scope: "@darthrommy"
+          always-auth: true
+      - run: npm ci
+      - run: npm run build
+      - run: npm pack --dry-run
