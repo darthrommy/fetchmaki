@@ -1,19 +1,9 @@
 {
   "name": "@darthrommy/fetches",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A simple fetch wrapper for Typescript",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "typesVersions": {
-    "<4.5": {
-      "*": [
-        "dist/*"
-      ],
-      "esm/*": [
-        "dist/*"
-      ]
-    }
-  },
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -22,6 +12,7 @@
         "default": "./dist/esm/index.mjs"
       },
       "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
       "module": "./dist/esm/index.js",
       "default": "./dist/index.js"
     },
@@ -31,6 +22,7 @@
         "default": "./dist/esm/*.mjs"
       },
       "types": "./dist/*.d.ts",
+      "require": "./dist/*.js",
       "module": "./dist/esm/*.js",
       "default": "./dist/*.js"
     }
