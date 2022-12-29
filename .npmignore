@@ -1,0 +1,6 @@
+src
+.git
+.github
+.eslint*
+.prettier*
+rollup.config.mjs
