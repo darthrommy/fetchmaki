@@ -2,6 +2,7 @@ import {
   handleErrorBody,
   queryParser,
   resolveReqHeaders,
+  customFetch,
 } from "@darthrommy/fetches";
 import { z } from "zod";
 import { ZFResponse, ZodFetch } from "./types";
@@ -59,14 +60,19 @@ export const zodFetch: ZodFetch = {
   get: async (url, config) => {
     const headers = resolveReqHeaders({ ...config });
     const query = queryParser(config.query ?? {});
-    const res = await fetch(`${url}${query}`, { method: "GET", headers });
+    const fetcher = customFetch(config.customFetch);
+    const res = await fetcher(`${url}${query}`, {
+      method: "GET",
+      headers,
+    });
     return handleReturnValue(res, config.schema);
   },
 
   post: async (url, config) => {
     const headers = resolveReqHeaders({ ...config });
     const query = queryParser(config.query ?? {});
-    const res = await fetch(`${url}${query}`, {
+    const fetcher = customFetch(config.customFetch);
+    const res = await fetcher(`${url}${query}`, {
       method: "POST",
       headers,
       body: config.body ? JSON.stringify(config.body) : undefined,
@@ -77,7 +83,8 @@ export const zodFetch: ZodFetch = {
   patch: async (url, config) => {
     const headers = resolveReqHeaders({ ...config });
     const query = queryParser(config.query ?? {});
-    const res = await fetch(`${url}${query}`, {
+    const fetcher = customFetch(config.customFetch);
+    const res = await fetcher(`${url}${query}`, {
       method: "POST",
       headers,
       body: config.body ? JSON.stringify(config.body) : undefined,
