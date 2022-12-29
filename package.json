@@ -1,6 +1,6 @@
 {
   "name": "@darthrommy/fetches",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A simple fetch wrapper for Typescript",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
