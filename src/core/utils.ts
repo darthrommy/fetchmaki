@@ -1,4 +1,11 @@
-import { FetchHeaders, Json, Query } from "./types";
+import {
+  ContentType,
+  FetchHeaders,
+  FetchResponse,
+  Json,
+  Query,
+  ResponseBody,
+} from "./types";
 
 export const queryParser = (query: Query) => {
   const joined = new URLSearchParams(query).toString();
@@ -26,4 +33,46 @@ export const resolveReqHeaders = (args: {
     ...args.headers,
     ...(args.body ? { "content-type": "application/json" } : {}),
   };
+};
+
+/** handles parsing respone body by given `contentType`. */
+const handleResBody = async (res: Response, contentType: ContentType) => {
+  switch (contentType) {
+    case "plain":
+      return await res.text();
+    case "html":
+      return await res.text();
+    case "json":
+      return await res.json();
+    case "noContent":
+      return;
+    default:
+      throw new Error("Response body type is inacceptable");
+  }
+};
+
+/** handles return value of `typedFetch` functions. Useful for creating wrappers of `typedFetch`. */
+export const handleReturnValue = async <Data extends ResponseBody>(
+  res: Response,
+  contentType: ContentType
+): Promise<FetchResponse<Data>> => {
+  if (res.ok) {
+    const body = await handleResBody(res, contentType);
+    return {
+      data: body,
+      error: null,
+      status: res.status,
+      statusText: res.statusText,
+      headers: res.headers,
+    };
+  } else {
+    const body = await handleErrorBody(res);
+    return {
+      data: null,
+      error: { message: body },
+      status: res.status,
+      statusText: res.statusText,
+      headers: res.headers,
+    };
+  }
 };

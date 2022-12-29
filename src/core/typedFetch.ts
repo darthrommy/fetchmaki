@@ -1,45 +1,5 @@
-import { ContentType, FetchResponse, ResponseBody, TypedFetch } from "./types";
-import { handleErrorBody, queryParser, resolveReqHeaders } from "./utils";
-
-const handleResBody = async (res: Response, contentType: ContentType) => {
-  switch (contentType) {
-    case "plain":
-      return await res.text();
-    case "html":
-      return await res.text();
-    case "json":
-      return await res.json();
-    case "noContent":
-      return;
-    default:
-      throw new Error("Response body type is inacceptable");
-  }
-};
-
-const resolveReturnValue = async <Data extends ResponseBody>(
-  res: Response,
-  contentType: ContentType
-): Promise<FetchResponse<Data>> => {
-  if (res.ok) {
-    const body = await handleResBody(res, contentType);
-    return {
-      data: body,
-      error: null,
-      status: res.status,
-      statusText: res.statusText,
-      headers: res.headers,
-    };
-  } else {
-    const body = await handleErrorBody(res);
-    return {
-      data: null,
-      error: { message: body },
-      status: res.status,
-      statusText: res.statusText,
-      headers: res.headers,
-    };
-  }
-};
+import { TypedFetch } from "./types";
+import { queryParser, resolveReqHeaders, handleReturnValue } from "./utils";
 
 /** An wrapper of the Web Fetch API. Provides `get`, `post`, `put`, `patch` and `delete` functions. */
 export const typedFetch: TypedFetch = {
@@ -48,7 +8,7 @@ export const typedFetch: TypedFetch = {
     const query = queryParser(config?.query ?? {});
     const res = await fetch(`${url}${query}`, { headers, method: "GET" });
     const contentType = config?.contentType ?? "json";
-    return resolveReturnValue(res, contentType);
+    return handleReturnValue(res, contentType);
   },
 
   post: async (url, config) => {
@@ -60,7 +20,7 @@ export const typedFetch: TypedFetch = {
       body: config?.body ? JSON.stringify(config.body) : undefined,
     });
     const contentType = config?.contentType ?? "json";
-    return resolveReturnValue(res, contentType);
+    return handleReturnValue(res, contentType);
   },
 
   put: async (url, config) => {
@@ -71,7 +31,7 @@ export const typedFetch: TypedFetch = {
       method: "PUT",
       body: config?.body ? JSON.stringify(config.body) : undefined,
     });
-    return resolveReturnValue(res, "noContent");
+    return handleReturnValue(res, "noContent");
   },
 
   patch: async (url, config) => {
@@ -83,7 +43,7 @@ export const typedFetch: TypedFetch = {
       body: config?.body ? JSON.stringify(config.body) : undefined,
     });
     const contentType = config?.contentType ?? "json";
-    return resolveReturnValue(res, contentType);
+    return handleReturnValue(res, contentType);
   },
 
   delete: async (url, config) => {
@@ -95,6 +55,6 @@ export const typedFetch: TypedFetch = {
       body: config?.body ? JSON.stringify(config.body) : undefined,
     });
     const contentType = config?.contentType ?? "noContent";
-    return resolveReturnValue(res, contentType);
+    return handleReturnValue(res, contentType);
   },
 };
