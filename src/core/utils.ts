@@ -1,5 +1,6 @@
 import {
   ContentType,
+  Fetch,
   FetchHeaders,
   FetchResponse,
   Json,
@@ -75,4 +76,8 @@ export const handleReturnValue = async <Data extends ResponseBody>(
       headers: res.headers,
     };
   }
+};
+
+export const customFetch = (method: Fetch = fetch) => {
+  return method;
 };

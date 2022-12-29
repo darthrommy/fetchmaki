@@ -12,14 +12,15 @@ const addAuthHeader = (
 /** client of `@darthrommy/fetches/supabase`. BTW **sef** stands for ***S**upabase **E**dge **F**unctions*.
  * @see https://rommy-docs.pages.dev/docs/fetches/supabase
  */
-export const sefClient: SEFClient = ({ referenceId, apiKey }) => {
+export const sefClient: SEFClient = ({ referenceId, apiKey, customFetch }) => {
   const authorization = `Bearer ${apiKey}` as const;
   const baseUrl = `https://${referenceId}.functions.supabase.co` as const;
   return {
     get: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
       return typedFetch.get(`${baseUrl}${endpoint}`, {
-        ...config,
+        customFetch,
+        ...config, // overwrite global customFetch
         headers,
       });
     },
@@ -27,6 +28,7 @@ export const sefClient: SEFClient = ({ referenceId, apiKey }) => {
     post: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
       return typedFetch.post(`${baseUrl}${endpoint}`, {
+        customFetch,
         ...config,
         headers,
       });
@@ -35,6 +37,7 @@ export const sefClient: SEFClient = ({ referenceId, apiKey }) => {
     put: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
       return typedFetch.put(`${baseUrl}${endpoint}`, {
+        customFetch,
         ...config,
         headers,
       });
@@ -43,6 +46,7 @@ export const sefClient: SEFClient = ({ referenceId, apiKey }) => {
     patch: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
       return typedFetch.patch(`${baseUrl}${endpoint}`, {
+        customFetch,
         ...config,
         headers,
       });
@@ -51,6 +55,7 @@ export const sefClient: SEFClient = ({ referenceId, apiKey }) => {
     delete: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
       return typedFetch.delete(`${baseUrl}${endpoint}`, {
+        customFetch,
         ...config,
         headers,
       });

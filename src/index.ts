@@ -5,4 +5,5 @@ export {
   queryParser,
   resolveReqHeaders,
   handleReturnValue,
+  customFetch,
 } from "./core/utils";

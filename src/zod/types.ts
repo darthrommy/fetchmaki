@@ -1,7 +1,9 @@
 import {
-  FetchConfig,
   FetchData,
   FetchResponse,
+  GetRequest,
+  PatchRequest,
+  PostRequest,
   ResponseBody,
 } from "@darthrommy/fetches";
 import { z } from "zod";
@@ -32,8 +34,8 @@ export type ZFError = {
 
 // GET
 export type ZGetRequest<Schema extends ObjectSchema> = [
-  url: string,
-  config: Omit<FetchConfig, "body"> & {
+  url: GetRequest[0],
+  config: GetRequest[1] & {
     schema: Schema;
   }
 ];
@@ -44,8 +46,8 @@ export type ZGetFunction = <Schema extends ObjectSchema>(
 
 // POST
 export type ZPostRequest<Schema extends ObjectSchema> = [
-  url: string,
-  config: FetchConfig & { schema: Schema }
+  url: PostRequest[0],
+  config: PostRequest[1] & { schema: Schema }
 ];
 
 export type ZPostFunction = <Schema extends ObjectSchema>(
@@ -54,8 +56,8 @@ export type ZPostFunction = <Schema extends ObjectSchema>(
 
 // PATCH
 export type ZPatchRequest<Schema extends ObjectSchema> = [
-  url: string,
-  config: FetchConfig & { schema: Schema }
+  url: PatchRequest[0],
+  config: PatchRequest[1] & { schema: Schema }
 ];
 
 export type ZPatchFunction = <Schema extends ObjectSchema>(
