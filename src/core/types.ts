@@ -64,17 +64,17 @@ export type TypedFetch = {
 };
 
 // get type
-export type GetRequst = [url: string, config?: Omit<FetchConfig, "body">];
+export type GetRequest = [url: string, config?: Omit<FetchConfig, "body">];
 
 export type GetFunction = <Data extends ResponseBody>(
-  ...args: GetRequst
+  ...request: GetRequest
 ) => Promise<FetchResponse<Data>>;
 
 // post type
 export type PostRequest = [url: string, config?: FetchConfig];
 
 export type PostFunction = <Data extends ResponseBody>(
-  ...args: PostRequest
+  ...request: PostRequest
 ) => Promise<FetchResponse<Data>>;
 
 // put type
@@ -84,19 +84,19 @@ export type PutRequest = [
 ];
 
 export type PutFunction = (
-  ...args: PutRequest
+  ...request: PutRequest
 ) => Promise<FetchResponse<undefined>>;
 
 // patch type
 export type PatchRequest = [url: string, config?: FetchConfig];
 
 export type PatchFunction = <Data extends ResponseBody>(
-  ...args: PatchRequest
+  ...request: PatchRequest
 ) => Promise<FetchResponse<Data>>;
 
 // delete type
 export type DeleteRequest = [url: string, config?: FetchConfig];
 
 export type DeleteFunction = <Data extends ResponseBody = undefined>(
-  ...args: DeleteRequest
+  ...request: DeleteRequest
 ) => Promise<FetchResponse<Data>>;

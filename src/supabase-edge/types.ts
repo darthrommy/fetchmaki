@@ -1,9 +1,11 @@
 import {
-  DeleteFunction,
-  GetFunction,
-  PatchFunction,
-  PostFunction,
-  PutFunction,
+  DeleteRequest,
+  FetchResponse,
+  GetRequest,
+  PatchRequest,
+  PostRequest,
+  PutRequest,
+  ResponseBody,
 } from "@darthrommy/fetches";
 
 export type ClientArgs = {
@@ -21,17 +23,43 @@ export type SEFClient = (config: ClientArgs) => {
   /** `PUT` to your supabase functions. */
   put: SPPutFunction;
   /** `PATCH` your supabase functions. */
-  patch: PatchFunction;
+  patch: SPPatchFunction;
   /** `DELETE` your supabase functions. (don't worry! it won't actually delete your functions!) */
-  delete: DeleteFunction;
+  delete: SPDeleteFunction;
 };
 
-export type SPGetFunction = GetFunction;
+export type SPGetRequest = [endpoint: PostRequest[0], config?: GetRequest[1]];
 
-export type SPPostFunction = PostFunction;
+export type SPGetFunction = <Data extends ResponseBody>(
+  ...request: SPGetRequest
+) => Promise<FetchResponse<Data>>;
 
-export type SPPutFunction = PutFunction;
+export type SPPostRequest = [endpoint: PostRequest[0], config?: PostRequest[1]];
 
-export type SPPatchFunction = PatchFunction;
+export type SPPostFunction = <Data extends ResponseBody>(
+  ...request: SPPostRequest
+) => Promise<FetchResponse<Data>>;
 
-export type SPDeleteFunction = DeleteFunction;
+export type SPPutRequest = [endpoint: PutRequest[0], config?: PutRequest[1]];
+
+export type SPPutFunction = (
+  ...request: SPPutRequest
+) => Promise<FetchResponse<undefined>>;
+
+export type SPPatchRequest = [
+  endpoint: PatchRequest[0],
+  config?: PatchRequest[1]
+];
+
+export type SPPatchFunction = <Data extends ResponseBody>(
+  ...request: SPPatchRequest
+) => Promise<FetchResponse<Data>>;
+
+export type SPDeleteRequest = [
+  endpoint: DeleteRequest[0],
+  config?: DeleteRequest[1]
+];
+
+export type SPDeleteFunction = <Data extends ResponseBody = undefined>(
+  ...request: SPDeleteRequest
+) => Promise<FetchResponse<Data>>;

@@ -9,7 +9,9 @@ const addAuthHeader = (
   return { ...baseHeader, authorization };
 };
 
-/** client of `@darthrommy/fetches/supabase`. BTW **sef** stands for ***S**upabase **E**dge **F**unctions*. */
+/** client of `@darthrommy/fetches/supabase`. BTW **sef** stands for ***S**upabase **E**dge **F**unctions*.
+ * @see https://rommy-docs.pages.dev/docs/fetches/supabase
+ */
 export const sefClient: SEFClient = ({ referenceId, apiKey }) => {
   const authorization = `Bearer ${apiKey}` as const;
   const baseUrl = `https://${referenceId}.functions.supabase.co` as const;
