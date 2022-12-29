@@ -47,7 +47,7 @@
     "build:supabase-edge": "rollup -c --config-supabase-edge",
     "prepublishOnly": "npm run build",
     "lint": "eslint src/**",
-    "copy": "shx cp -r dist/* . && shx rm -rf .github dist .eslint* .gitignore .prettier* package-lock.json rollup.config.mjs",
+    "copy": "shx cp -r dist/* . && shx rm -rf .github dist .eslint* .gitignore .prettier* package-lock.json rollup.config.mjs .git",
     "test:build": "npm run copy && npm pack --dry-run"
   },
   "repository": {
