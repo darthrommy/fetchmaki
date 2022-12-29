@@ -48,7 +48,7 @@
     "prepublishOnly": "npm run build",
     "lint": "eslint src/**",
     "copy": "shx cp -r dist/* . && shx rm -rf dist",
-    "test:build": "npm run copy && npm pack --dry-run"
+    "test:build": "npm run copy && npm publish --dry-run"
   },
   "repository": {
     "type": "git",
