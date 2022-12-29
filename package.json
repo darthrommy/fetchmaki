@@ -2,15 +2,15 @@
   "name": "@darthrommy/fetches",
   "version": "0.2.3",
   "description": "A simple fetch wrapper for Typescript",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./index.js",
+  "types": "./index.d.ts",
   "typesVersions": {
     "<4.5": {
-      "*": [
-        "dist/*"
-      ],
       "esm/*": [
-        "dist/*"
+        "*"
+      ],
+      "*": [
+        "*"
       ]
     }
   },
@@ -18,36 +18,37 @@
     "./package.json": "./package.json",
     ".": {
       "import": {
-        "types": "./dist/esm/index.d.ts",
-        "default": "./dist/esm/index.mjs"
+        "types": "./esm/index.d.ts",
+        "default": "./esm/index.mjs"
       },
-      "types": "./dist/index.d.ts",
-      "module": "./dist/esm/index.js",
-      "default": "./dist/index.js"
+      "types": "./index.d.ts",
+      "module": "./esm/index.js",
+      "default": "./index.js"
     },
     "./*": {
       "import": {
-        "types": "./dist/esm/*.d.ts",
-        "default": "./dist/esm/*.mjs"
+        "types": "./esm/*.d.ts",
+        "default": "./esm/*.mjs"
       },
-      "types": "./dist/*.d.ts",
-      "module": "./dist/esm/*.js",
-      "default": "./dist/*.js"
+      "types": "./*.d.ts",
+      "module": "./esm/*.js",
+      "default": "./*.js"
     }
   },
   "files": [
-    "dist"
+    "**"
   ],
   "sideEffects": false,
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "shx rm -rf dist",
     "build": "concurrently -m 8 'npm:build:*'",
     "build:base": "rollup -c",
     "build:zod": "rollup -c --config-zod",
     "build:supabase-edge": "rollup -c --config-supabase-edge",
     "prepublishOnly": "npm run build",
     "lint": "eslint src/**",
-    "pack": "npm pack --dry-run"
+    "copy": "shx cp dist . && shx rm -rf .github dist .eslint* .gitignore .prettier* package-lock.json rollup.config.mjs",
+    "test:build": "npm run copy && npm pack --dry-run"
   },
   "repository": {
     "type": "git",
@@ -68,13 +69,14 @@
     "eslint": "^8.30.0",
     "rimraf": "^3.0.2",
     "rollup": "^3.8.1",
+    "shx": "^0.3.4",
     "typescript": "^4.9.4"
   },
   "engines": {
     "node": ">=14.16"
   },
   "dependencies": {
-    "zod": "^3.20.2"
+    "zod": "^3.20.0"
   },
   "peerDependencies": {
     "zod": "^3.20.0"
