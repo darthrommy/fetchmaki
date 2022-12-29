@@ -1,5 +1,6 @@
 import {
   DeleteRequest,
+  Fetch,
   FetchResponse,
   GetRequest,
   PatchRequest,
@@ -13,6 +14,10 @@ export type ClientArgs = {
   referenceId: string;
   /** Either anon/service role key of your project. */
   apiKey: string;
+  /** Globally defines custom fetch client. Can be alternative fetches like `cross-fetch` and `node-fetch`.
+   *  You can also configure in each method overwriting this configuration.
+   */
+  customFetch?: Fetch;
 };
 
 export type SEFClient = (config: ClientArgs) => {

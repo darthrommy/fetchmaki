@@ -7,6 +7,9 @@ export type Json = Record<
   string | number | boolean | null | { [key: string]: Json } | Json[]
 >;
 
+/** fetch type */
+export type Fetch = typeof fetch;
+
 /** query type */
 export type Query = Record<string, string>;
 
@@ -41,6 +44,7 @@ export type FetchConfig = {
   query?: Query;
   body?: Json;
   contentType?: ContentType;
+  customFetch?: typeof fetch;
 };
 
 /** `typedFetch` interface */
