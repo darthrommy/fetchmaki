@@ -72,14 +72,8 @@ export default (args) => {
     c = "index";
   }
   return [
-    ...(c === "index"
-      ? [
-          createDeclaration(`src/${c}.ts`, "dist"),
-          createDeclaration(`src/${c}.ts`, "dist/esm"),
-        ]
-      : []),
-    createEsmBuild(`src/${c}.ts`, `dist/esm/${c}.js`),
-    createEsmBuild(`src/${c}.ts`, `dist/esm/${c}.mjs`),
-    createCJSBuild(`src/${c}.ts`, `dist/${c}.js`),
+    ...(c === "index" ? [createDeclaration(`src/${c}.ts`, "dist/types")] : []),
+    createEsmBuild(`src/${c}.ts`, `dist/${c}.js`),
+    createCJSBuild(`src/${c}.ts`, `dist/cjs/${c}.js`),
   ];
 };
