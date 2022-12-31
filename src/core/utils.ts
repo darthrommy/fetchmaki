@@ -43,12 +43,14 @@ const handleResBody = async (res: Response, contentType: ContentType) => {
       return await res.text();
     case "html":
       return await res.text();
+    case "text":
+      return await res.text();
     case "json":
       return await res.json();
     case "noContent":
       return;
     default:
-      throw new Error("Response body type is inacceptable");
+      throw new Error("Response body type is not supported");
   }
 };
 

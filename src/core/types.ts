@@ -13,8 +13,8 @@ export type Fetch = typeof fetch;
 /** query type */
 export type Query = Record<string, string>;
 
-/** available content type */
-export type ContentType = "json" | "plain" | "html" | "noContent";
+/** available content type. `plain` and `html` are deprecated. */
+export type ContentType = "json" | "plain" | "html" | "noContent" | "text";
 
 /** body type */
 export type ResponseBody = string | Json | undefined;
