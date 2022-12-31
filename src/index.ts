@@ -1,4 +1,4 @@
-export { sushi as sushi } from "./core/fetchmaki";
+export { fetchmaki } from "./core/fetchmaki";
 export * from "./core/types";
 export {
   handleErrorBody,

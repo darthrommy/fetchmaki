@@ -5,7 +5,7 @@ import {
   customFetch,
 } from "fetchmaki";
 import { z } from "zod";
-import { ZFResponse, ZodFetch } from "./types";
+import { ZFResponse, Zodmaki } from "./types";
 
 const handleResBody = async (res: Response, schema: z.ZodTypeAny) => {
   const body = await res.json();
@@ -56,7 +56,7 @@ const handleReturnValue = async <Schema extends z.ZodObject<z.ZodRawShape>>(
 };
 
 /** An wrapper of the Web Fetch API with zod body validation. Provides `get`, `post`, `put`, `patch` and `delete` functions. */
-export const zodFetch: ZodFetch = {
+export const zodmaki: Zodmaki = {
   get: async (url, config) => {
     const headers = resolveReqHeaders({ ...config });
     const query = queryParser(config.query ?? {});

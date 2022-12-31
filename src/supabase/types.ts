@@ -20,7 +20,7 @@ export type ClientArgs = {
   customFetch?: Fetch;
 };
 
-export type SEFClient = (config: ClientArgs) => {
+export type Supamaki = (config: ClientArgs) => {
   /** `GET` from your supabase functions. */
   get: SPGetFunction;
   /** `POST` to your supabase functions. */

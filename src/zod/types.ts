@@ -9,7 +9,7 @@ import {
 import { z } from "zod";
 
 /** `zodFetch` interface. `application/json` is only allowed as an allowed response body type. */
-export type ZodFetch = {
+export type Zodmaki = {
   /** Do a `GET` with zod validation. */
   get: ZGetFunction;
   /** Do a `POST` with zod validation. */
