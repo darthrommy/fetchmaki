@@ -1,4 +1,4 @@
-import { FetchHeaders, typedFetch } from "@darthrommy/fetches";
+import { FetchHeaders, sushi } from "@darthrommy/fetches";
 import { SEFClient } from "./types";
 
 /** add `authorization` header. Overrides your own `authorization`. */
@@ -18,7 +18,7 @@ export const sefClient: SEFClient = ({ referenceId, apiKey, customFetch }) => {
   return {
     get: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
-      return typedFetch.get(`${baseUrl}${endpoint}`, {
+      return sushi.get(`${baseUrl}${endpoint}`, {
         customFetch,
         ...config, // overwrite global customFetch
         headers,
@@ -27,7 +27,7 @@ export const sefClient: SEFClient = ({ referenceId, apiKey, customFetch }) => {
 
     post: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
-      return typedFetch.post(`${baseUrl}${endpoint}`, {
+      return sushi.post(`${baseUrl}${endpoint}`, {
         customFetch,
         ...config,
         headers,
@@ -36,7 +36,7 @@ export const sefClient: SEFClient = ({ referenceId, apiKey, customFetch }) => {
 
     put: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
-      return typedFetch.put(`${baseUrl}${endpoint}`, {
+      return sushi.put(`${baseUrl}${endpoint}`, {
         customFetch,
         ...config,
         headers,
@@ -45,7 +45,7 @@ export const sefClient: SEFClient = ({ referenceId, apiKey, customFetch }) => {
 
     patch: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
-      return typedFetch.patch(`${baseUrl}${endpoint}`, {
+      return sushi.patch(`${baseUrl}${endpoint}`, {
         customFetch,
         ...config,
         headers,
@@ -54,7 +54,7 @@ export const sefClient: SEFClient = ({ referenceId, apiKey, customFetch }) => {
 
     delete: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
-      return typedFetch.delete(`${baseUrl}${endpoint}`, {
+      return sushi.delete(`${baseUrl}${endpoint}`, {
         customFetch,
         ...config,
         headers,
