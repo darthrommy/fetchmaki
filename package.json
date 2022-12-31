@@ -1,7 +1,7 @@
 {
-  "name": "typedfetch",
-  "version": "0.3.0",
-  "description": "A simple fetch wrapper for Typescript",
+  "name": "fetchmaki",
+  "version": "1.0.0",
+  "description": "A simple fetch wrapper with Typescript",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/index.js",
@@ -59,7 +59,7 @@
   "bugs": {
     "url": "https://github.com/darthrommy/typedfetch/issues"
   },
-  "homepage": "https://github.com/darthrommy/typedfetch#readme",
+  "homepage": "https://rommy-docs.pages.dev/docs/fetchmaki",
   "devDependencies": {
     "@rollup/plugin-typescript": "^10.0.1",
     "@types/node": "^18.11.18",

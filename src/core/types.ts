@@ -48,7 +48,7 @@ export type FetchConfig = {
 };
 
 /** `typedFetch` interface */
-export type TypedFetch = {
+export type Sushi = {
   /** Just do a `GET`. `config.contentType` is `json` by default. */
   get: GetFunction;
 

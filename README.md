@@ -1,11 +1,7 @@
-# @darthrommy/fetches
+# fetchmaki
 
-## Code of conduct
+The name `fetchmaki` is a mixture of Javascript built-in method `fetch` and Japanese word `maki` - _wrapping something_. You may know some kind of _sushi🍣_, like _Tekka maki_ and _Kappa maki_.
 
-### `src/core/**`
+Since this library's main purpose is to wrap `res.json()` with Typescript, I thought the nuance of _maki_ was a perfect fit.
 
-Must be exported to `src/index.ts`. You must define only methods related to `typedFetch` function and other small `fetch` utils inside this directory.
-
-### `src/xxx/**`
-
-Must be exported to `src/xxx.ts`. Any functions that wrap core methods (e.g. `typedFetch`) in `src/core` directory must be defined inside this directory.
+I'm launching the [documentation site](https://rommy-docs.page.dev/docs/fetchmaki) for this library. Come and see for the details.

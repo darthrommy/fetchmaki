@@ -1,4 +1,4 @@
-export { typedFetch } from "./core/typedFetch";
+export { sushi as sushi } from "./core/fetchmaki";
 export * from "./core/types";
 export {
   handleErrorBody,
