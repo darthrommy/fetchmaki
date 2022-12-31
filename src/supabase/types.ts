@@ -7,7 +7,7 @@ import {
   PostRequest,
   PutRequest,
   ResponseBody,
-} from "@darthrommy/fetches";
+} from "fetchmaki";
 
 export type ClientArgs = {
   /** A reference ID of your supabase project. `xxx` in `https://xxx.supabase.co` */

@@ -5,8 +5,8 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "@darthrommy/fetches": ["./src/index.ts"],
-      "@darthrommy/fetches/*": ["./src/*.ts"]
+      "fetchmaki": ["./src/index.ts"],
+      "fetchmaki/*": ["./src/*.ts"]
     },
     "esModuleInterop": true,
     "strict": true,
