@@ -1,5 +1,5 @@
-import { FetchHeaders, sushi } from "fetchmaki";
-import { SEFClient } from "./types";
+import { FetchHeaders, fetchmaki } from "fetchmaki";
+import { Supamaki } from "./types";
 
 /** add `authorization` header. Overrides your own `authorization`. */
 const addAuthHeader = (
@@ -9,16 +9,16 @@ const addAuthHeader = (
   return { ...baseHeader, authorization };
 };
 
-/** client of `fetchmaki/supabase`. BTW **sef** stands for ***S**upabase **E**dge **F**unctions*.
- * @see https://rommy-docs.pages.dev/docs/fetches/supabase
+/** client of `fetchmaki/supabase`.
+ * @see https://rommy-docs.pages.dev/docs/fetchmaki/supabase
  */
-export const sefClient: SEFClient = ({ referenceId, apiKey, customFetch }) => {
+export const supamaki: Supamaki = ({ referenceId, apiKey, customFetch }) => {
   const authorization = `Bearer ${apiKey}` as const;
   const baseUrl = `https://${referenceId}.functions.supabase.co` as const;
   return {
     get: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
-      return sushi.get(`${baseUrl}${endpoint}`, {
+      return fetchmaki.get(`${baseUrl}${endpoint}`, {
         customFetch,
         ...config, // overwrite global customFetch
         headers,
@@ -27,7 +27,7 @@ export const sefClient: SEFClient = ({ referenceId, apiKey, customFetch }) => {
 
     post: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
-      return sushi.post(`${baseUrl}${endpoint}`, {
+      return fetchmaki.post(`${baseUrl}${endpoint}`, {
         customFetch,
         ...config,
         headers,
@@ -36,7 +36,7 @@ export const sefClient: SEFClient = ({ referenceId, apiKey, customFetch }) => {
 
     put: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
-      return sushi.put(`${baseUrl}${endpoint}`, {
+      return fetchmaki.put(`${baseUrl}${endpoint}`, {
         customFetch,
         ...config,
         headers,
@@ -45,7 +45,7 @@ export const sefClient: SEFClient = ({ referenceId, apiKey, customFetch }) => {
 
     patch: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
-      return sushi.patch(`${baseUrl}${endpoint}`, {
+      return fetchmaki.patch(`${baseUrl}${endpoint}`, {
         customFetch,
         ...config,
         headers,
@@ -54,7 +54,7 @@ export const sefClient: SEFClient = ({ referenceId, apiKey, customFetch }) => {
 
     delete: async (endpoint, config) => {
       const headers = addAuthHeader(authorization, config?.headers);
-      return sushi.delete(`${baseUrl}${endpoint}`, {
+      return fetchmaki.delete(`${baseUrl}${endpoint}`, {
         customFetch,
         ...config,
         headers,

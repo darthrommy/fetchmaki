@@ -1,4 +1,4 @@
-import { Sushi } from "./types";
+import { Fetchmaki } from "./types";
 import {
   queryParser,
   resolveReqHeaders,
@@ -7,7 +7,7 @@ import {
 } from "./utils";
 
 /** An wrapper of the Web Fetch API. Provides `get`, `post`, `put`, `patch` and `delete` functions. */
-export const sushi: Sushi = {
+export const fetchmaki: Fetchmaki = {
   get: async (url, config) => {
     const headers = resolveReqHeaders({ ...config });
     const query = queryParser(config?.query ?? {});
