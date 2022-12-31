@@ -5,7 +5,7 @@ import {
   PatchRequest,
   PostRequest,
   ResponseBody,
-} from "@darthrommy/fetches";
+} from "fetchmaki";
 import { z } from "zod";
 
 /** `zodFetch` interface. `application/json` is only allowed as an allowed response body type. */

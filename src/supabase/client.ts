@@ -1,4 +1,4 @@
-import { FetchHeaders, sushi } from "@darthrommy/fetches";
+import { FetchHeaders, sushi } from "fetchmaki";
 import { SEFClient } from "./types";
 
 /** add `authorization` header. Overrides your own `authorization`. */
@@ -9,7 +9,7 @@ const addAuthHeader = (
   return { ...baseHeader, authorization };
 };
 
-/** client of `@darthrommy/fetches/supabase`. BTW **sef** stands for ***S**upabase **E**dge **F**unctions*.
+/** client of `fetchmaki/supabase`. BTW **sef** stands for ***S**upabase **E**dge **F**unctions*.
  * @see https://rommy-docs.pages.dev/docs/fetches/supabase
  */
 export const sefClient: SEFClient = ({ referenceId, apiKey, customFetch }) => {

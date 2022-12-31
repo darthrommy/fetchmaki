@@ -3,7 +3,7 @@ import {
   queryParser,
   resolveReqHeaders,
   customFetch,
-} from "@darthrommy/fetches";
+} from "fetchmaki";
 import { z } from "zod";
 import { ZFResponse, ZodFetch } from "./types";
 
