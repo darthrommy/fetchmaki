@@ -2,10 +2,13 @@
 export type FetchHeaders = Record<string, string>;
 
 /** possible JSON type */
-export type Json = Record<
-  string,
-  string | number | boolean | null | { [key: string]: Json } | Json[]
->;
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json }
+  | Json[];
 
 /** fetch type */
 export type Fetch = typeof fetch;
